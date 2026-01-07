@@ -19,7 +19,6 @@ import joblib
 # 1. LOAD DATASET
 # ===============================
 df = pd.read_csv("cardio_train.csv", sep=";")
-model = joblib.load("model.pkl")
 print("Initial Shape:", df.shape)
 
 # ===============================
@@ -110,3 +109,4 @@ print("\nConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
 joblib.dump(model, "model.pkl")
 
 print("\n✅ Model saved as model.pkl") 
+
