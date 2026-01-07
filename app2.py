@@ -14,6 +14,10 @@ from sklearn.metrics import (
 )
 if "theme" not in st.session_state:
     st.session_state.theme = "dark"
+import os
+
+port = int(os.environ.get("PORT", 8501))
+
 
 
 # ===============================
@@ -30,10 +34,8 @@ st.set_page_config(
 # ===============================
 model = joblib.load("model.pkl")
 
-df = pd.read_csv(
-    r"C:\Users\krupali\Desktop\sem 6\MLDL\project 1\dataset\cardio_train.csv",
-    sep=";"
-)
+df = pd.read_csv("cardio_train.csv", sep=";")
+
 
 df["age"] = (df["age"] / 365).astype(int)
 df["bmi"] = df["weight"] / ((df["height"] / 100) ** 2)
@@ -562,6 +564,9 @@ else:
 
     ⚠️ Educational & research demonstration only.
     """)
+if __name__ == "__main__":
+    os.system(f"streamlit run app.py --server.port {port} --server.address 0.0.0.0")
 
    
+
 
